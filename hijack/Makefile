@@ -3,10 +3,10 @@
 # $(TARGET).elf $(TARGET).hex and $(TARGET).txt nad $(TARGET).map are all generated.
 # The TXT file is used for BSL loading, the ELF can be used for JTAG use
 
-TARGET     = out
-#MCU        = msp430fr5969
+TARGET     = FramHijack
+MCU        = msp430fr5969
 
-MCU = msp430f1611
+#MCU = msp430f1611
 
 BUILD    = build
 SOURCES = $(wildcard src/*.c)
@@ -16,7 +16,7 @@ SOURCES += $(wildcard src/peripherals/msp/*.c)
 #SOURCES = $(foreach file,${SOURCES_A},$(notdir ${file}))
 
 
-INCLUDES = -I/usr/local/msp430/include -Isrc/include
+INCLUDES = -I../../../msp430/mspgcc/msp430/include -Isrc/include
 CFLAGS   = -mmcu=$(MCU) -O2 -g -Wall -Wunused $(INCLUDES)   
 ASFLAGS  = -mmcu=$(MCU) -x assembler-with-cpp -Wa,-gstabs
 LDFLAGS  = -mmcu=$(MCU) -Wl,-Map=$(TARGET).map
